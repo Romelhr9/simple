@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Lista Simple enlazada</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="Mas/estilo01.css">
+
+    </head>
+    <body>
+        <h2>Estructura Lista simple</h2>
+        <h3>DESCRIPCIÓN</h3>
+		<p>
+        Se formará de una lista enlazada de nodos, donde cada nodo contiene uno o más
+        datos y además un apuntador al siguiente nodo de la lista.
+		</p>
+<div id="cf43pa" class="shadow">
+  <img src="Imagenes/ListaSimple03.jpg" />
+  <img src="Imagenes/ListaSimple02.jpg" />
+  <img src="Imagenes/ListaSimple01.jpg" />
+</div>
+        <p>En la anterior lista tenemos una cantidad indeterminada de nodos, de los cuales 
+        podemos saber que: </p>
+		<ol>
+            <li>la lista inicia en el apuntador que señala al primer nodo, 
+            <li>el ultimo nodo ya no apunta a otro nodo, sino a nada, 
+            <li>que utiliza memoria dinámica.
+		</ol>
+	    <p>Cada vez que creemos un nodo, estableceremos dos propiedades de él</p>
+		<ol>
+            <li>el dato que almacene  y
+		    <li>que su apuntador señale a Nada
+		</ol>
+<div id="cf42pa" class="shadow">
+  <img src="Imagenes/CreaNodo02.jpg" />
+  <img src="Imagenes/CreaNodo01.jpg" />
+</div>
+        
+      <h3>AGREGAR NODOS</h3>
+        <p>Tendremos dos formas de agregar nodos a la lista enlazada.</p>
+        <ol>
+		  <li>Agregar nodos al inicio de la lista
+          <li>Agregar nodos al final de la lista
+	    </ol>
+
+       <h3>AGREGAR UN NODO AL INICIO DE LA LISTA</h3>
+        <p>
+        Al agregar un nodo al inicio de la lista, hacemos que el nuevo Nodo apunte a Primero
+        y que el apuntador Primero apunte al nuevo Nodo</p>
+        <ul>
+             <li>PASO 1: Crear nodo Nuevo
+             <li>PASO 2: Nuevo --> Primero
+             <li>PASO 3: Primero --> Nuevo
+         </ul> 
+<div id="cf45pa" class="shadow">
+  <img src="Imagenes/addFirst05.jpg" />
+  <img src="Imagenes/addFirst04.jpg" />
+  <img src="Imagenes/addFirst03.jpg" />
+  <img src="Imagenes/addFirst02.jpg" />
+  <img src="Imagenes/addFirst01.jpg" />
+</div>
+
+        <h3>AGREGAR UN NODO AL FINAL DE LA LISTA</h3>
+        <p>
+        Al agregar un nodo al final de la lista, ve si esta vacia, si lo esta, será el primer 
+        nodo de la lista. Si no esta vacia, busca el ultimo nodo y hace que este apunte al 
+        nuevo Nodo
+        </p>
+        <ul>
+             <li>PASO 1: Crear nodo Nuevo
+             <li>PASO 2: Si esta vacia, Hacer Primero apunta a Nuevo
+             <li>PASO 3.1: Si no esta vacia, recorre la lista hasta encontrar el ultimo 
+              <li>PASO 3.2: Pasa por cada nodo tras nodo hasta llegar al que apunta a null
+			 <li>PASO 3.3:   - Hace el ultimo nodo apunte al nuevo                
+         </ul> 
+<div id="cf48pa" class="shadow">
+  <img src="Imagenes/addEnd08.jpg" />
+  <img src="Imagenes/addEnd07.jpg" />
+  <img src="Imagenes/addEnd06.jpg" />
+  <img src="Imagenes/addEnd05.jpg" />
+  <img src="Imagenes/addEnd04.jpg" />
+  <img src="Imagenes/addEnd03.jpg" />
+  <img src="Imagenes/addEnd02.jpg" />
+  <img src="Imagenes/addEnd01.jpg" />
+</div>
+
+        <h3>QUITAR EL PRIMER NODO DE LA LISTA</h3>
+        <p>
+          Solo hace este trabajo, si la lista no esta vacia.<br/>
+          Hace que el apuntador Primero apunte al siguiente de este, por lo cual al que apuntaba           
+        </p>
+        <ul>
+             <li>PASO 1: Inicializa la variable dato que regresará el valor convertido a String del 
+                            posible contenido en Primero, es decir, la dirección del primer nodo de la lista
+             <li>PASO 2: Si la lista no esta vacía, hace lo siguiente:
+             <li>PASO 2.1: Guarda en la variable actual la referencia que contiene el Nodo Primero 
+             <li>PASO 2.2: Hace que el Nodo Primero tome la referencia del apuntador Siguiente de este mismo Nodo
+             <li>PASO 2.3: Copia a la variable dato, el valor convertido a String del nodo al que referenciaba el nodo Primero,  
+                              que se había respaldado o guardao en el paso 2.1
+         </ul> 
+<div id="cf45pa" class="shadow">
+  <img src="Imagenes/DelFirst05.jpg" />
+  <img src="Imagenes/DelFirst04.jpg" />
+  <img src="Imagenes/DelFirst03.jpg" />
+  <img src="Imagenes/DelFirst02.jpg" />
+  <img src="Imagenes/DelFirst01.jpg" />
+</div>
+
+        <h3>QUITAR EL NODO QUE ESTA AL FINAL DE LA LISTA</h3>
+        <p>
+          Solo hace este trabajo, si la lista no esta vacia.<br/>
+          Hay dos posibilidades:
+        </p>
+        <ol>
+            <li><strong>Si solo existe un nodo</strong>, i.e. si el apuntador siguiente del 1er nodo apunta a nada, entonces:
+                <ul>
+                    <li> Convierte a String el dato del primer nodo
+                    <li> Hace que el apuntador Primero apunte a <strong>nada</strong>, dado que estará borrando el único nodo de la lista
+                </ul>
+            <li>O si existen <strong>más nodos</strong>, entonces:
+                <ul>
+                    <li>Recorre la lista hasta encontrar el ultimo nodo
+                    <li>Convierte a String el dato almacenado en el último nodo
+                    <li> Hace que el pernúltimo nodo apunte a nada, para quitar la referencia que tenía hacia el último Nodo
+                </ul>
+           <li>Regresa el dato contenido en el último nodo
+        </ol>
+        <ul>
+             <li>PASO 1: Inicializa la variable dato que regresará el valor convertido a String del 
+                            posible contenido en Primero, es decir, la dirección del primer nodo de la lista
+             <li>PASO 2: Si la lista no esta vacía, hace lo siguiente:
+             <li>PASO 2.1: Si solo hay un nodo en la lista, o sea que el apuntador Siguiente de Primero apunta a nada
+             <ul>
+                 <li>PASO 2.1.1: Convierte a String el dato almacenado en el Primer y único Nodo de la lista
+                 <li>PASO 2.1.2: Hace que Primero apunte a nada, para borrar el único nodi de la lista.
+             </ul>
+             <li>PASO 2.2: Si existe más de un nodo en la lista, hace lo siguiente:
+             <ul>    
+                 <li>PASO 2.2.1: Crea variables Anterior y Actual para que ambas referencíen al primer npdo de la lista
+                 <li>PASO 2.2.2: Con un ciclo mientras el apuntador Siguiente de Actual no sea nulo, buscar el ultimo nodo<br />
+				 <ul>
+                 <li>PASO 2.2.2.1: Va cambiando la referencia del nodo anterior a donde apunta actual
+				 <li> PASO 2.2..2.2: También va actualizando la referencia del nodo Actual al Siguiente de actual
+				 </ul>
+                 <li>PASO 2.2.3: Al salir del ciclo, habrá localizado al último nodo y tomará de él el valor que almacena
+                 <li>PASO 2.2.4: Hace que el apuntador Siguiente de Anterior apunte a nada, así deja de apuntar al último nodo
+             </ul>
+             <li>PASO 2.3: Regresa el dato del último nodo o null si la lista ya estaba vacía
+         </ul> 
+<div id="cf48pa" class="shadow">
+  <img src="Imagenes/DelEnd08.jpg" />
+  <img src="Imagenes/DelEnd07.jpg" />
+  <img src="Imagenes/DelEnd06.jpg" />
+  <img src="Imagenes/DelEnd05.jpg" />
+  <img src="Imagenes/DelEnd04.jpg" />
+  <img src="Imagenes/DelEnd03.jpg" />
+  <img src="Imagenes/DelEnd02.jpg" />
+  <img src="Imagenes/DelEnd01.jpg" />
+</div>
+        
+        <h3>QUITAR UN NODO QUE CONTENGA UN CIERTO DATO</h3>
+        <p>
+          Este método regresará el valor del dato que borró o null si no lo encontró<br/>
+        </p>
+        <ol>
+              <li>Indica que el dato a regresar es nulo, por si no lo encuentra
+              <li>Primero verifica que no este vacía la lista:<br />
+              <li>Enseguida, invoca a un método para buscar el nodo que contenga un valor dado, a lo cual dicho método regresará
+                  tres datos:<br />
+                  1) si lo encontró o no, 2) el nodo donde lo encontró y 3) el nodo anterior al nodo lo encontró<br/>
+              <li>A continuación verifica si encontró un nodo con el valor a borrar:
+              <ol start="5">
+                  <li>Si lo encontró, entónces verifica si es el primer nodo de la lista
+                  <ol start="6.1">
+                      <li>Si lo es, actualiza el apuntador Primero para que señale al siguiente de este nodo.
+                      <li>Si no es el primer nodo, entónces hace que el el nodo anterior al que se borrará<br />
+                        apunte al que el ndo a borrar indica que es el siguiente a él
+                  </ol>
+				  <ol start="8">
+                  <li> En ambos casos, queda sin referencia (sin que algun nodo le apunte) el nodo que se deseaba borrar.
+				 </ol>
+              </ol>
+		</ol>
+		<ol start="9">
+            <li>Si no lo encontró, va a regresar null y no borrará ningún nodo
+        </ol>
+<div id="cf46pa" class="shadow">
+  <img src="Imagenes/DelValor06.jpg" />
+  <img src="Imagenes/DelValor05.jpg" />
+  <img src="Imagenes/DelValor04.jpg" />
+  <img src="Imagenes/DelValor03.jpg" />
+  <img src="Imagenes/DelValor02.jpg" />
+  <img src="Imagenes/DelValor01.jpg" />
+</div>
+
+        <h3>BUSCAR UN NODO QUE CONTENGA UN CIERTO DATO</h3>
+        <p>
+          Este método regresará el valor del dato que borró o null si no lo encontró<br/>
+        </p>
+          <ol>
+              <li>Indica que el dato a regresar es nulo, por si no lo encuentra
+              <li>Si la lista no está vacía hace lo siguiente:<br />
+              <li>Invoca a un método para buscar el nodo que contenga un valor dado, a lo cual dicho método regresará
+                  tres datos:<br />
+                  1) si lo encontró o no, 2) el nodo donde lo encontró y 3) el nodo anterior al nodo lo encontró<br/>
+              <li>A continuación verifica si encontró un nodo con el valor buscado:
+			</ol>
+            <ol start="5">
+               <li>Si lo encontró, entonces:
+                  <ol  start="6">
+                      <li>Recupera en un objeto nodo al elemento #2 del arreglo, que corresponde al 
+                         nodo que contiene el dato
+                      <li>Ahora convierte a String el dato del nodo localizado
+                  </ol>
+            </ol>
+            <ol  start="8">
+               <li>Al final regresa el String del dato localizado o null si no encontró.
+            </ol>
+<div id="cf47bpa" class="shadow">
+  <img src="Imagenes/I-back.gif" />
+  <img src="Imagenes/BuscaNodo06.jpg" />
+  <img src="Imagenes/BuscaNodo05.jpg" />
+  <img src="Imagenes/BuscaNodo04.jpg" />
+  <img src="Imagenes/BuscaNodo03.jpg" />
+  <img src="Imagenes/BuscaNodo02.jpg" />
+  <img src="Imagenes/BuscaNodo01.jpg" />
+</div>
+
+        <h3>LOCALIZAR EL NODO QUE CONTENGA UN CIERTO DATO</h3>
+        <p>
+          Este método regresará un arreglo con tres datos: 
+        </p>
+        <ul>
+            <li>Verdadero o Falso si es que halló un Nodo; 
+            <li>El nodo que contiene el dato buscado
+            <li>El nodo anterior al nodo que contiene el dato
+        </ul>
+        <ol>
+     	    <li>Inicializa tres variables, que al prinicipio indican que aún no encuentra nada<br/>
+			 <li>Crea un nodo que contenga el dato a buscar, para comparacion vs. cada nodo a revisar
+             <li>Repite los siguientes pasos si no encuentra el dato ni llega a un nodo nulo
+			 <ol start="4">
+			    <li>Compara el valor del nodo actual vs. el dato que busca
+                 <li>Si lo encuentra lo indica con valor True, sino false
+                 <li>Si no, recorre el apuntador actual hacia el siguiente nodo, pero antes asigna a Anterior la referencia del nodo actual.
+                 <li>Vuelve al probar si el ciclo termina o sigue recorriendo la lista enlazada
+		     </ol>
+			 </ol>
+			 <ol start="8">
+               <li>Al salir del ciclo, coloca en el arreglo de datos lo siguiente:<br/>
+			 </ol>
+            <ul>
+                <li>El primer elemento del arrego será True o False 
+                <li>El segundo elemento será la referencia al nodo que podría contener el dato buscado
+                <li>El tercer elemento del arreglo, será el nodo anterior al que tuviera el dato,
+            </ul>
+<div id="cf47pa" class="shadow">
+  <img src="Imagenes/LocaNodo07.jpg" />
+  <img src="Imagenes/LocaNodo06.jpg" />
+  <img src="Imagenes/LocaNodo05.jpg" />
+  <img src="Imagenes/LocaNodo04.jpg" />
+  <img src="Imagenes/LocaNodo03.jpg" />
+  <img src="Imagenes/LocaNodo02.jpg" />
+  <img src="Imagenes/LocaNodo01.jpg" />
+</div>
+
+        <h3>METODO PARA MOSTRAR LOS DATOS DE LA LISTA SIN RECURSIVIDAD</h3>
+        <p>
+          Este método regresará un String con los valores de los datos almacenados en la lista.
+        </p>
+        <ol>
+            <li>Inicializa una variable Salida con nada
+            <li>Valida que la lista no esta vacia, o en caso contrario asigna a resultado un mensaje que no tiene datos
+            <li>Si no esta vacía la lista
+                <ol start="4">
+                    <li>Inicializa la variable actual con la referencia al primer nodo de la lista
+                    <li>Hace un ciclo para detenerse hasta que actual sea nulo.
+                        <ol  start="6">
+                            <li>Dentro del ciclo, coloca en Salida al valor almacenado en la referencia del nodo actual.
+                            <li>Hace que actual apunte al siguiente nodo de la lista
+                        </ol>
+			    </ol>
+			    <ol start="8">
+    				<li>Al salir del ciclo, va al final de método.
+                </ol>
+		</ol>
+		<ol start="9">
+               <li>Al final del método, regresa la variable Salida con la lista de datos o con un mensaje de lista vacía.
+        </ol>
+<div id="cf47pa" class="shadow">
+  <img src="Imagenes/PrinNoRec07.jpg" />
+  <img src="Imagenes/PrinNoRec06.jpg" />
+  <img src="Imagenes/PrinNoRec05.jpg" />
+  <img src="Imagenes/PrinNoRec04.jpg" />
+  <img src="Imagenes/PrinNoRec03.jpg" />
+  <img src="Imagenes/PrinNoRec02.jpg" />
+  <img src="Imagenes/PrinNoRec01.jpg" />
+</div>  
+
+        <h3>METODO PARA MOSTRAR LOS DATOS DE LA LISTA CON RECURSIVIDAD</h3>
+        <p>
+          Este método regresará un String con los valores de los datos almacenados en la lista.
+        </p>
+        <ol>
+            <li>Inicializa una variable resultado con nada
+            <li>Valida que la lista no esta vacia, o en caso contrario asigna a resultado un mensaje que no tiene datos
+            <li>Si no esta vacía, invoca a un método al que le pasa la referencia al primer nodo de la lista.
+            <li>Retorna la variale resultado con la lista de nodos o un mensaje de lista vacia
+        </ol>
+
+
+        <h3>METODO PARA DIRIGIR EN DONDE AGREGAR EL NODO</h3>
+        <p>
+          Se desea con este métodos interpretar el resultado de los distintos métodos para agregar datos en esta Lista.<br/>
+        <ol>
+            <li>Este metodo recibe 2 datos: un valor entero que indica si desea agregar al inicio de la lista o al final y el segundo parámetro es 
+          el dato que desea agregar.
+            <li>Coloca en Salida un valor vacio. Se actualizará con el valor del nodo agregado o con un mensaje de error          
+            <li>Valida si indicó correctamente el valor que dirige hacia invocar agregar al inicio o al final. En caso de que no este correcto el valor, 
+          generar un mensaje de error que regresa como resultado del método
+            <li>Una vez que ejecute el método seleccionado para agregar un dato, valida si dicho método regresa como resultado un cero, el cual indica
+          que el método no terminó con un error
+            <li>Es entonces invoca al metodo que obtiene los valores de los datos almacenados en la lista.
+            <li>En caso de que el valor retornado del método para agregar datos no sea cero, guarda en Salida un mensaje de error
+            <li>Al final este método retorna un String con la lista de nodos actualizada o un mensaje de error.
+        </ol>
+
+        <h3>METODO PARA DIRIGIR EN DONDE ELIMINAR UN  NODO</h3>
+        <p>
+          Se desea con este métodos interpretar el resultado de los distintos métodos para borrar datos en esta Lista.<br/>
+        <ol>
+            <li>Este metodo recibe 2 datos: un valor entero que indica si desea borrar al inicio de la lista o al final o
+                el nodo que contiene un dato; el segundo parámetro es el dato que desea borrar
+            <li>Coloca en Salida un valor vacio. Se actulizará con el valor del nodo borrado o con un mensaje de error
+            <li>Valida si indicó correctamente el valor que dirige hacia invocar borrar al inicio o al final o el que tenga un cierto dato.
+            <li>En caso de que no este correcto el valor, generar un mensaje de error que regresa como resultado del método
+            <li>Una vez que ejecute el método seleccionado para borrar un dato, valida si dicho método regresa como resultado un cero, el cual indica
+          que el método no terminó con un error
+            <li>Es entonces invoca al metodo que obtiene los valores de los datos almacenados en la lista.
+            <li>En caso de que el valor retornado del método para borrar datos no sea cero, guarda en Salida un mensaje de error
+            <li>Al final este método retorna un String con la lista de nodos actualizada o un mensaje de error.
+        </ol>
+
+
+        
+    </body>
+</html>
